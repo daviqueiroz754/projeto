@@ -20,18 +20,68 @@
 
   <!-- estilo css -->
   <link href="estilo css/estilo.css" rel="stylesheet" type="text/css">
-  
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 </head>
 
 <body>
-
+  <!-- Barra menu principal -->
   <nav class="navbar" id="menu-principal">
     <a class="navbar-brand"> <img src="imagens/eCommerce-Logo.png" id="logo"> FG Variedades</a>
     <form class="form-inline fundo-branco">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn botao-search-menu" type="submit">Search</button>
+      <input class="form-control mr-lg-3" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn incons-menu" type="submit"><i class="fas fa-search"></i></button>
     </form>
+    <div class="btn-group-lg">
+      <button class="btn btn-lg incons-menu"><a><i class="far fa-user-circle"></i></a> Minha conta</button>
+      <button class="btn btn-lg incons-menu"><a><i class="far fa-heart"></i></a></button>
+      <button class="btn btn-lg incons-menu"><a><i class="fas fa-shopping-cart"></i></a></button>
+    </div>
   </nav>
+  <!-- fim menu principal -->
+
+  <!-- sub-menu -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sub-menu">
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="link nav-link" href="#">aaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaaa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link" href="#">aaaaa</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- fim sub-menu -->
 
   <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
       <h5 class="my-0 mr-md-auto font-weight-normal">FG Variedades</h5>
@@ -268,7 +318,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>   
+    crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
   <script src="../../assets/js/vendor/popper.min.js"></script>
   <script src="../../dist/js/bootstrap.min.js"></script>

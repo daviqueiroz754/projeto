@@ -1,12 +1,12 @@
 .fundo-branco {
-    padding: 3px;
+    padding: 3px; 
     background-color: white;
     border-radius: 5px;
 }
 
-.botao-search-menu {
-    color: white;
+.incons-menu{
     background-color: #01A9DB;
+    color: white;
 }
 
 #logo {
@@ -20,9 +20,73 @@
     background-color: #01A9DB;
     position: fixed;
     width: 100%;
+    font-size: 35px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .card{
     position: static;
 }
+
+/* sub-menu */
+.sub-menu{
+    position: static;
+    padding-top: 70px;    
+    width: 100%;
+}
+
+.link{
+    margin-left: 30px;
+    margin-right: 30px;
+    right: 100%;
+}
+
+.link a:hover{
+    color: #01A9DB;
+}
+
+.link a{
+    text-decoration: none;
+}
+
+.dropbtn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #01A9DB;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: static;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    /* z-index: 1; */
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn{
+    background-color: #f1f1f1;
+  }
 
