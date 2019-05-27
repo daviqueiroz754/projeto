@@ -1,4 +1,6 @@
 <?php
+include("initSession.php");
+
 include("bd.php");
 $id = $_GET["id"];
 

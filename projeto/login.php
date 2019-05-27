@@ -23,7 +23,7 @@
 
 <div style="margin-left:400px; margin-right:400px; margin-top: 100px;" class=˜col-mb-4˜>
 
-    <form  class="form-control">
+    <form action="checaLogin.php" method="POST"  class="form-control">
        <img src="imagens/unifg.png" class="img-responsive">
       <h1 class="h3 mb-3 font-weight-normal">Area do cliente</h1>
       <label for="inputEmail" class="sr-only">Email address</label>

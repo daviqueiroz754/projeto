@@ -1,4 +1,6 @@
 <?php
+include("initSession.php");
+
 include("bd.php");
 
 include("cabecalho.php");
@@ -36,62 +38,16 @@ include("cabecalho.php");
 
       <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Seu carrinho</span>
-            <span class="badge badge-secondary badge-pill">3</span>
-          </h4>
-
-
-          <!-- lista os produtos do carrinho -->
-
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Product name</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$12</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Second product</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$8</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Third item</h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-              <span class="text-muted">$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">Promo code</h6>
-                <small>EXAMPLECODE</small>
-              </div>
-              <span class="text-success">-$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>$20</strong>
-            </li>
-          </ul>
-
-          <form class="card p-2">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Codigo promocional">
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Resgatar</button>
-              </div>
-            </div>
-          </form>
+        
         </div>
+
+
+
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">Informaçoes e dados de pagamento</h4>
-          <form class="needs-validation" novalidate>
+          <form action="compraFinalizada.php" method="POST" class="needs-validation" novalidate>
             <div class="row">
+              <form action="compraFinalizada.php" method="POST">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Nome</label>
                 <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
@@ -123,7 +79,7 @@ include("cabecalho.php");
 
             <div class="mb-3">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com">
+              <input type="email" class="form-control" name="email" id="email" placeholder="seuemail@exemplo.com">
               <div class="invalid-feedback">
                 Insira seu e-mail para informaçôes de entrega.
               </div>
@@ -131,7 +87,7 @@ include("cabecalho.php");
 
             <div class="mb-3">
               <label for="email">Senha</label>
-              <input type="password" class="form-control" id="senha" placeholder="Digite uma senha">
+              <input name="senha" type="password" class="form-control" id="senha" placeholder="Digite uma senha">
             
             </div>
 
@@ -146,27 +102,45 @@ include("cabecalho.php");
            
 
             <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">País</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">Escolha</option>
-                  <option>Chile</option>
-                  <option>Argentina</option>
-                  <option>Brasil</option>
-                </select>
-                <div class="invalid-feedback">
-                  Selecione um país valido.
-                </div>
-              </div>
+             
               <div class="col-md-4 mb-3">
                 <label for="state">Estado</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Escolha</option>
-                  <option>Pernambuco</option>
-                  <option>Paraiba</option>
+                
+
+              <select class="custom-select d-block w-100" id="state" required>
+    <option value="AC">Acre</option>
+    <option value="AL">Alagoas</option>
+    <option value="AP">Amapá</option>
+    <option value="AM">Amazonas</option>
+    <option value="BA">Bahia</option>
+    <option value="CE">Ceará</option>
+    <option value="DF">Distrito Federal</option>
+    <option value="ES">Espírito Santo</option>
+    <option value="GO">Goiás</option>
+    <option value="MA">Maranhão</option>
+    <option value="MT">Mato Grosso</option>
+    <option value="MS">Mato Grosso do Sul</option>
+    <option value="MG">Minas Gerais</option>
+    <option value="PA">Pará</option>
+    <option value="PB">Paraíba</option>
+    <option value="PR">Paraná</option>
+    <option value="PE">Pernambuco</option>
+    <option value="PI">Piauí</option>
+    <option value="RJ">Rio de Janeiro</option>
+    <option value="RN">Rio Grande do Norte</option>
+    <option value="RS">Rio Grande do Sul</option>
+    <option value="RO">Rondônia</option>
+    <option value="RR">Roraima</option>
+    <option value="SC">Santa Catarina</option>
+    <option value="SP">São Paulo</option>
+    <option value="SE">Sergipe</option>
+    <option value="TO">Tocantins</option>
+    <option value="ES">Estrangeiro</option>
+</select>
 
 
-                </select>
+
+
                 <div class="invalid-feedback">
                   Selecione um estado valido.
                 </div>
@@ -179,16 +153,7 @@ include("cabecalho.php");
                 </div>
               </div>
             </div>
-            <hr class="mb-4">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="same-address">
-              <label class="custom-control-label" for="same-address">Endereço de entrega é o mesmo do endereço residencial </label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="save-info">
-              <label class="custom-control-label" for="save-info">Salvar meus dados</label>
-            </div>
-            <hr class="mb-4">
+            
 
             <h4 class="mb-3">Pagamento</h4>
 
@@ -197,14 +162,8 @@ include("cabecalho.php");
                 <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required> 
                 <label class="custom-control-label" for="credit">Cartão de credito</label>
               </div>
-              <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="debit">Cartão de debito</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="paypal">Paypal</label>
-              </div>
+            
+            
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -244,7 +203,6 @@ include("cabecalho.php");
           </form>
         </div>
       </div>
-
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2017-2018 FG Variedades</p>
         <ul class="list-inline">

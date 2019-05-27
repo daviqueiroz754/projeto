@@ -1,176 +1,63 @@
-
 <?php
 include("bd.php");
 include("initSession.php");
 
-
-$sql = mysqli_query($conexao, "SELECT * FROM produto");
-
 include("cabecalho.php");
 
+$email = $_POST["email"];
+$senha = $_POST["senha"];
 
-?>
+echo $email;
+echo $senha;
 
+$sql = mysqli_query($conexao, "SELECT * FROM usuario where email = '$email' AND senha = '$senha'");
 
+if(!($row = $sql->fetch_array())){
+$sql = mysqli_query($conexao, "insert into usuario(nome, email, senha) VALUES('Joao', '$email', '$senha')");
 
 
-
-
-
-   <center><img src="imagens/banner.jpg" class="img-responsive"></center>
-
-   <br/>
-
-    <div class="container">
-               <div class="card-deck mb-3 text-center">
-
-
-
-
-
-
-
-
-
-
-
-       
-
-
-
-                <?php
-                $i = 0;
-                $j = 0;
-
-
-
-while (true) {
-
-
-
-if ($i == 3) {
-?>
-                 <div class="card-deck mb-3 text-center">
-
-<?php
-
-                  $i = 0;
-
-
-}
-
-
-
-if($row = $sql->fetch_array()){
-?>
-
-
-
-
-
-        
- <div class="card mb-4 box-shadow">
-          <div style="background-color: orange;" class="card-header">
-            <h4 class="my-0 font-weight-normal">  
-<?= $row["nome"];?>
-
-</h4>
-          </div>
-
-
-
-          <div class="card-body">   
-
-           <img width="300" height="300" class="img-responsive" src="<?= $row["imagemProduto"];?>">
-
-           <br/>
-
-
-
-            <h1 style="font-size: 24px;" class="badge badge-pill badge-success"> R$<?= $row["preco"];?> </h1>
- <?php
-
-       
-
-        $i++;
-?>
-
-
-
-
-            <a href="produto.php?id=<?=$row["id"]?>"><button type="button" class="btn btn-lg btn-block btn-primary">Comprar</button></a>
-          </div>
-        </div>
-
-       
-
-
-
-        
-
- 
-
-
-
-
-
-
-
-
-
-
-
-<?php
-
-if($i == 3){
-
-$inicio = false;
-
-  ?>
-
-</div>
-
-<?php
-
-continue;
-
-}
-
-}else{
-
-  break;
-}
-
-$j++;
-
-
+  
 }
 
 
 
 
-if($j<3){
 
 ?>
 
-</div>
 
-<?php
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-}
+    <title>Pricing example for Bootstrap</title>
 
-    ?>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/pricing/">
 
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
+  </head>
 
-       
+  <body>
 
+  
 
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="text-success" class="display-4">Compra realizada com sucesso!</h1>
+      <p class="lead">Muito obrigado por comprar com a FG variedades [nomeUsuario]</p>
+      <center>     <a href="index.html"> <p class="lead">Voltar para pagina inicial</p></a>
+</center>
+    </div>
 
-
-</div>      
-
-            
+  
 
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">

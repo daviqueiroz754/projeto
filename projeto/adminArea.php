@@ -35,14 +35,49 @@ include("cabecalho.php");
     <main role="main" class="container">
 
       <div class="row">
-        <div  class="col-md-12"> <center><h1>Olá <?=$nome?>, seja bem vindo a area do cliente</h1> </div>
+        <div  class="col-md-12"> <center><h1>Olá <?=$nome?>, seja bem vindo a area do administrador</h1> </div>
       </div>
 
       <div class="row">
 
          <div style="margin-top: 100px;" class="col-md-12">
 
-      <h3>Ultimos pedidos</h3>
+   
+
+       <h3>Usuários cadastrados</h3>
+
+      <table class="table">
+      <th>N. pedido</th>
+      <th>Nome do produto</th>
+      <th>Preço</th>
+      <th>Endereço</th>
+     
+
+
+      <tr>
+        
+        <td>
+          363763868368
+
+        </td>
+
+         <td>
+          Video game
+
+        </td>
+
+        <td>R$900</td>
+
+        <td> Rua Amélia</td>
+
+
+
+
+      </tr>
+
+      </table>
+
+   <h3>Produtos Cadastrados</h3>
 
       <table class="table">
       <th>N. pedido</th>
@@ -63,8 +98,18 @@ include("cabecalho.php");
 
         </td>
 
-      
+        <td>R$900</td>
 
+  <td>
+
+          <button class="btn-danger">Remover</button>
+
+        </td>
+
+        <td>
+          <button class="btn-success">Editar</button>
+
+        </td>
 
 
       </tr>

@@ -1,16 +1,18 @@
 <?php
 
 
-
 include("bd.php");
 include("initSession.php");
 include("cabecalho.php");
+
+
 
 $idProduto = $_GET["idProduto"];
 
 array_push($_SESSION["produtosCarrinho"], $idProduto);
 
 sort($_SESSION["produtosCarrinho"]);  
+
 
 
 
@@ -74,14 +76,18 @@ while ($i < count($_SESSION["produtosCarrinho"])) {
         }
 
 
-        $sql = mysqli_query($conexao, "SELECT * FROM produto where id = $produtoAt");
+        $sql = mysqli_query($conexao, "SELECT * FROM produto where id = '$produtoAt'");
         $row = $sql->fetch_array();
         $total = $total + $row["preco"]; 
+
+
         ?>
 
         <tr>
+
+
               <td><img class="img-responsive" src="<?=$row["imagemProduto"]?>" width="60" height="60"></td>
-              <td><?=$row["nome"]?></td>
+              <td><?=$row["nome"]?>  </td>
               <td>
                 
                 <input type="number" name="quantidade" value="<?=$quantidade?>">
@@ -117,7 +123,7 @@ while ($i < count($_SESSION["produtosCarrinho"])) {
             <table class="table">
             <tr>
               <td>  <input class="form-control" type="text" placeholder="Insira seu CEP" name="frete"></td>
-              <td> <button type="button" class="btn btn-lg btn-block btn-primary">Calcular frete</button></td>
+              <td> <button  type="button" onclick="freteCalcula()" class="btn btn-lg btn-block btn-primary">Calcular frete</button></td>
             </tr>
 
             <tr>
@@ -129,6 +135,19 @@ while ($i < count($_SESSION["produtosCarrinho"])) {
 
             </table>
 </div>
+
+
+ <script type="text/javascript">
+              
+              function freteCalcula(){
+
+                document.getElementById("freteCalculado").innerHTML = "<h3 style='color:green'>FRETE GRÁTIS</h3>";
+
+
+              }
+            </script>
+
+           
 
 <div  class="card" style="width: 100%;">
   <div class="card-body">
@@ -144,7 +163,7 @@ while ($i < count($_SESSION["produtosCarrinho"])) {
 
                         <?php if($total > 99){
 ?>
-                        <td> <h3 style="float:right; color: green">Frete: GRÁTIS</h3></td>
+                        <td> <h3 id="freteCalculado" style="float:right; color: green">Frete: </h3></td>
 <?php
                         }
                           ?>

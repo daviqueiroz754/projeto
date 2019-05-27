@@ -1,4 +1,6 @@
-
+<?php
+$nomeUsuario = "José";
+?>
 
 <!doctype html>
 <html lang="en">
@@ -34,11 +36,35 @@
 
 </form>
 
-      <nav class="my-2 my-md-0 mr-md-3">
+      <nav style="margin-left: 60px;" class="my-2 my-md-0 mr-md-3">
 
-        <a class="p-2 text-dark" href="#">Quem somos</a>
-        <a class="p-2 text-dark" href="#">Atendimento</a>
+        <a class="p-2 text-dark" href="#">Olá <?=$nomeUsuario?> </a>
         
       </nav>
+
+
+      <?php
+
+      if( ( isset( $_SESSION["usuarioLogado"]) )   ){
+
+
+        ?>
+
+      <a class="btn btn-outline-primary" href="logout.php">Sair</a>
+<?php
+
+}
+else if(!( isset( $_SESSION["usuarioLogado"]) ) ){
+
+  ?>
+
       <a class="btn btn-outline-primary" href="login.php">Entrar</a>
+
+
+  <?php
+}
+
+
+?>
+      
     </div>
