@@ -4,8 +4,17 @@ include("initSession.php");
 
 include("cabecalho.php");
 
+function getUserId($conexao, $email, $senha){
+
+$sql = mysqli_query($conexao, "select id from usuario where email = '$email' AND senha = '$senha'");
+$row = $sql->fetch_array();
+return $row["id"]; 
+
+}
+
 $email = $_POST["email"];
 $senha = $_POST["senha"];
+$codigoPedido = 123445;
 
 echo $email;
 echo $senha;
@@ -14,10 +23,56 @@ $sql = mysqli_query($conexao, "SELECT * FROM usuario where email = '$email' AND 
 
 if(!($row = $sql->fetch_array())){
 $sql = mysqli_query($conexao, "insert into usuario(nome, email, senha) VALUES('Joao', '$email', '$senha')");
+$usuario = getUserId($conexao, $email, $senha);
 
 
   
+}else{
+
+$usuario = $row["id"];
+
+
 }
+
+
+
+// Gerando pedido
+mysqli_query($conexao, "insert into pedidos(codigoPedido, comprador) VALUES($codigoPedido, $usuario) ");
+
+
+
+
+// Inserindo pedidos feitos pelo usuário
+$produtoAt = 0;
+$i = 0;
+$total = 0;
+$quantidade = 1;
+
+
+while ($i < count($_SESSION["produtosCarrinho"])) {
+        $produtoAt = $_SESSION["produtosCarrinho"][$i];
+
+        if(isset($_SESSION["produtosCarrinho"][$i + 1])){
+
+            if(($produtoAt == $_SESSION["produtosCarrinho"][$i + 1]) ){
+                $quantidade++;
+                $i++;
+                continue;
+
+            }
+
+
+        }
+                echo $quantidade;
+                  $sql = mysqli_query($conexao, "insert into pedido_produtos(codigoPedido, codigoProduto, quantidade) VALUES($codigoPedido, $produtoAt, $quantidade) ");
+
+$quantidade = 1;
+$i++;
+
+      }
+
+
+
 
 
 

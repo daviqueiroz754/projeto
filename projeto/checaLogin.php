@@ -1,10 +1,12 @@
 <?php
+include("initSession.php");
+
 include("bd.php");
 include("initSession.php");
 
 
-$email = $_GET["email"];
-$senha = $_GET["senha"];
+$email = $_POST["email"];
+$senha = $_POST["senha"];
 
 $sql = mysqli_query($conexao, "SELECT * FROM usuario where email = '$email' AND senha = '$senha'");
 

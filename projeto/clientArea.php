@@ -4,6 +4,25 @@ $nome = "José";
 include("bd.php");
 include("initSession.php");
 include("cabecalho.php");
+$id = $_SESSION["usuarioLogado"];
+$sql = mysqli_query($conexao, "SELECT codigoPedido from pedidos where comprador = $id");
+
+
+
+$codigoPedidosLista = array();
+
+ while($row = $sql->fetch_array()) {
+//Lista dos pedidos do comprador
+array_push($codigoPedidosLista, $row["codigoPedido"]);
+  }
+
+
+
+        
+
+
+
+
 ?>
 
 
@@ -42,34 +61,95 @@ include("cabecalho.php");
 
          <div style="margin-top: 100px;" class="col-md-12">
 
-      <h3>Ultimos pedidos</h3>
+      
+     
 
-      <table class="table">
-      <th>N. pedido</th>
-      <th>Nome do produto</th>
+   <h3>Ultimos pedidos</h3>
+
+    <table class="table">
+        <th>N. pedido</th>
+           <th></th>
+                      <th>Nome</th>
+
+       
       <th>Preço</th>
+       <th>Quantidade</th>
+<?php
+
+$codigo = 0;
+$k = 0;
+$j = 0;
+
+while($j < count($codigoPedidosLista)){
+
+
+$codigo = $codigoPedidosLista[$j];
+
+$sql = mysqli_query($conexao, "SELECT * from pedido_produtos as pp join produto as pr where pp.codigoProduto = pr.id AND pp.codigoPedido = $codigo");
+
+
+        while($row = $sql->fetch_array()){
+
+
+
+
+?>
+
+
+     
+
+    
+
+
+
+
+
+
      
 
 
+
+
+
       <tr>
+
+        <td><?=$row["codigoPedido"]?></td>
         
+        
+              <td><img class="img-responsive" src="<?=$row["imagemProduto"]?>" width="60" height="60"></td>
+
+        
+
+         <td>
+<?=$row["nome"]?>
+        </td>
+
         <td>
-          363763868368
+<h1> R$<?=$row["preco"]?> </h1>
 
         </td>
 
-         <td>
-          Video game
+          <td>
+<h6> <?=$row["quantidade"]?> </h6>
 
         </td>
 
       
 
 
-
       </tr>
+<?php
+}
 
-      </table>
+$j++;
+
+}
+
+
+?>
+
+
+    </table>
 
 </div>
 
