@@ -18,6 +18,8 @@ mysqli_query($conexao, $sql);
 
 mysqli_close($conexao);
 
+header("Location: sendProduct.php");
+
 
 
 ?>
