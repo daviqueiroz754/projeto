@@ -1,0 +1,28 @@
+.fundo-branco {
+    padding: 3px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.botao-search-menu {
+    color: white;
+    background-color: #01A9DB;
+}
+
+#logo {
+    background-color: white;
+    width: 60px;
+    border-radius: 200px;
+}
+
+#menu-principal{
+    color: white;
+    background-color: #01A9DB;
+    position: fixed;
+    width: 100%;
+}
+
+.card{
+    position: static;
+}
+
