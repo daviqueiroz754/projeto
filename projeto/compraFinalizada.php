@@ -14,10 +14,9 @@ return $row["id"];
 
 $email = $_POST["email"];
 $senha = $_POST["senha"];
-$codigoPedido = 123445;
+$codigoPedido = rand();
 
-echo $email;
-echo $senha;
+
 
 $sql = mysqli_query($conexao, "SELECT * FROM usuario where email = '$email' AND senha = '$senha'");
 
@@ -63,7 +62,6 @@ while ($i < count($_SESSION["produtosCarrinho"])) {
 
 
         }
-                echo $quantidade;
                   $sql = mysqli_query($conexao, "insert into pedido_produtos(codigoPedido, codigoProduto, quantidade) VALUES($codigoPedido, $produtoAt, $quantidade) ");
 
 $quantidade = 1;

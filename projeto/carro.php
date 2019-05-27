@@ -9,9 +9,52 @@ include("cabecalho.php");
 
 $idProduto = $_GET["idProduto"];
 
+$remove = false;
+$adiciona = false;
+
+if(isset($_GET["remove"])){
+$remove = $_GET["remove"];
+$adiciona = false;
+
+
+}
+
+
+
+else if(isset($_GET["adiciona"])){
+
+  $adiciona = $_GET["adiciona"];
+  $remove = false;
+
+}
+
+
+if($remove){
+$key = array_search($idProduto, $_SESSION["produtosCarrinho"]); 
+
+unset($_SESSION["produtosCarrinho"][$key]);
+
+}
+
+else if($adiciona){
+
+          array_push($_SESSION["produtosCarrinho"], $idProduto);
+
+
+}
+
+else{
+
 array_push($_SESSION["produtosCarrinho"], $idProduto);
 
+}
+
+
 sort($_SESSION["produtosCarrinho"]);  
+
+//$_SESSION["produtosCarrinho"] = array_unique($_SESSION["produtosCarrinho"]);
+
+
 
 
 
@@ -83,14 +126,24 @@ while ($i < count($_SESSION["produtosCarrinho"])) {
 
         ?>
 
+        <script type="text/javascript">
+          
+
+
+        </script>
+
         <tr>
+
 
 
               <td><img class="img-responsive" src="<?=$row["imagemProduto"]?>" width="60" height="60"></td>
               <td><?=$row["nome"]?>  </td>
               <td>
-                
-                <input type="number" name="quantidade" value="<?=$quantidade?>">
+                <?php
+                $tempId = $row["id"];
+
+                ?>
+               <a href="carro.php?qt=<?=$quantidade?>&idProduto=<?=$tempId?>&remove=true"><button class="btn-danger">-</button> <input type="number" name="quantidade" value="<?=$quantidade?>"><a href="carro.php?qt=<?=$quantidade?>&idProduto=<?=$tempId?>&adiciona=true"><button class="btn-success">+</button>
               </td>
               <td> <h2 class="card-title pricing-card-title">R$<?=$row["preco"]?> </h2> </td>
             </tr>

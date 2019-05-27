@@ -4,6 +4,13 @@ $nome = "José";
 include("bd.php");
 include("initSession.php");
 include("cabecalho.php");
+
+if(!isset($_SESSION["usuarioLogado"])){
+
+    header("Location: login.php");
+
+}
+
 $id = $_SESSION["usuarioLogado"];
 $sql = mysqli_query($conexao, "SELECT codigoPedido from pedidos where comprador = $id");
 
